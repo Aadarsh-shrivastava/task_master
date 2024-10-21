@@ -14,8 +14,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Theme, useTheme} from '../../contexts/themeContext';
 import {useDispatch} from 'react-redux';
 import {useModal} from '../../hooks/useModal';
-import AddTaskModal from '../../components/AddTaskModal';
 import AddTaskForm from './components/AddTaskForm';
+import {FAB, PaperProvider} from 'react-native-paper';
+
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import DateAndTimePicker from './components/DateAndTimePicker';
 const TaskScreen = () => {
   const {theme, toggleTheme} = useTheme();
   const dispatch = useDispatch();
@@ -34,17 +37,19 @@ const TaskScreen = () => {
   };
 
   return (
-    <View style={styles(theme).container}>
-      <TaskList />
-      <View style={styles(theme).addTaskButon}>
-        <Icon
-          name="add"
-          size={theme.size.xl}
-          onPress={() => handleOpenModal()}
-        />
+    <PaperProvider>
+      <View style={styles(theme).container}>
+        <TaskList />
+        <View style={styles(theme).addTaskButon}>
+          <FAB
+            icon={({}) => <MaterialIcon name="add" size={24} />}
+            style={styles(theme).fab}
+            onPress={() => handleOpenModal()}
+          />
+        </View>
+        <ModalComponentWrapper />
       </View>
-      <ModalComponentWrapper />
-    </View>
+    </PaperProvider>
   );
 };
 
@@ -59,10 +64,13 @@ const styles = (theme: Theme) =>
     },
     addTaskButon: {
       margin: 20,
-      padding: theme.spacing.s / 2,
-      backgroundColor: theme.colors.primary,
       alignSelf: 'flex-end',
       alignItems: 'center',
       borderRadius: 100,
+    },
+    fab: {
+      borderColor: theme.colors.primary,
+      borderWidth: 1,
+      backgroundColor: theme.colors.background,
     },
   });

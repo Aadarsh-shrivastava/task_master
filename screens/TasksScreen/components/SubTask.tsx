@@ -12,11 +12,11 @@ const SubTask = ({subTask}: SubTaskProps) => {
     <View>
       {subTask.type == subTaskType.Step ? (
         <View>
-          <SubTaskStep />
+          <SubTaskStep subTask={subTask} />
         </View>
       ) : (
         <View>
-          <SubTaskCheck />
+          <SubTaskCheck subTask={subTask} />
         </View>
       )}
     </View>

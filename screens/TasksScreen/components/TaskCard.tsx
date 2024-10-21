@@ -46,7 +46,7 @@ const TaskCard = ({task}: TaskCardProps) => {
           dispatch({type: 'REMOVE_TASK', payload: task._id});
         }}
         onPress={() => {
-          navigation.push('TaskViewScreen');
+          navigation.push('TaskViewScreen', {taskId: task._id});
         }}>
         <View style={{margin: 10, marginHorizontal: 10}}>
           <View style={styles(theme).nameTime}>

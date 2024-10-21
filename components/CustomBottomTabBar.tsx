@@ -78,10 +78,12 @@ const styles = (theme: Theme) =>
     },
     focusedTab: {
       backgroundColor: theme.colors.primary,
-      opacity: 0.7,
+      borderColor: theme.colors.primary,
+      opacity: 0.9,
       borderRadius: 20,
       width: 60,
       alignItems: 'center',
+      borderWidth: 1,
     },
     unFocusedTab: {
       opacity: 0.7,

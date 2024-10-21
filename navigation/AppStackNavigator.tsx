@@ -1,10 +1,11 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabNavigator from './BottomTabNavigator';
 import SubTaskScreen from '../screens/TasksScreen/TaskViewScreen';
+import TaskViewHeader from '../components/TaskViewHeader';
 
 export type AppStackParamList = {
   HomeNavigator: undefined;
-  TaskViewScreen: undefined;
+  TaskViewScreen: {taskId: string};
   RoutineViewScreen: undefined;
   SettingsScreen: undefined;
 };
@@ -20,7 +21,7 @@ const AppStackNavigator = () => {
         component={BottomTabNavigator}
       />
       <AppStack.Screen
-        options={{headerShown: false}}
+        options={{header: () => <TaskViewHeader />}}
         name="TaskViewScreen"
         component={SubTaskScreen}
       />

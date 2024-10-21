@@ -8,7 +8,17 @@ const Router = () => {
   const {theme} = useTheme();
   return (
     <NavigationContainer
-      theme={{colors: {background: theme.colors.background}}}>
+      theme={{
+        dark: true,
+        colors: {
+          background: theme.colors.background,
+          primary: theme.colors.primary,
+          card: '',
+          text: theme.colors.foreground,
+          border: '',
+          notification: '',
+        },
+      }}>
       <AppStackNavigator />
     </NavigationContainer>
   );

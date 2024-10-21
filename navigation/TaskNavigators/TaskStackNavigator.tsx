@@ -17,7 +17,6 @@ const TaskStackNavigator = () => {
         name="TaskScreen"
         component={TaskScreen}
       />
-      <TaskStack.Screen name="SubTaskScreen" component={SubTaskScreen} />
     </TaskStack.Navigator>
   );
 };

@@ -61,7 +61,7 @@ const ModalComponent = ({
       animationType="slide">
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles(theme).modalOverlay}>
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => {}}>
             <View style={styles(theme).modalContent}>{children}</View>
           </TouchableWithoutFeedback>
         </View>
@@ -85,5 +85,7 @@ const styles = (theme: Theme) =>
       margin: theme.spacing.xl,
       width: '90%',
       borderRadius: 10,
+      borderColor: theme.colors.primary,
+      borderWidth: 0.3,
     },
   });

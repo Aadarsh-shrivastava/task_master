@@ -1,17 +1,31 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {Theme, useTheme} from '../../../contexts/themeContext';
 import CheckBox from 'react-native-check-box';
+import {subTask} from '../../../types';
+import {useDispatch} from 'react-redux';
 
-const SubTaskCheck = () => {
+interface SubTaskCheckProps {
+  subTask: subTask;
+}
+const SubTaskCheck = ({subTask}: SubTaskCheckProps) => {
   const {theme} = useTheme();
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const dispatch = useDispatch();
   return (
     <View style={styles(theme).container}>
       <View style={styles(theme).textCheckboxAndDate}>
-        <View style={styles(theme).textAndCheckbox}>
-          <Text style={styles(theme).text}>{'subtask1'}</Text>
-        </View>
+        <TouchableOpacity
+          onPress={() =>
+            dispatch({
+              type: 'REMOVE_SUB_TASK',
+              payload: {taskId: 'task1', subTaskId: subTask._id},
+            })
+          }>
+          <View style={styles(theme).textAndCheckbox}>
+            <Text style={styles(theme).text}>{'subtask1'}</Text>
+          </View>
+        </TouchableOpacity>
         <View style={styles(theme).dateAndCheckbox}>
           <Text style={{paddingHorizontal: 10}}>Date</Text>
           <CheckBox

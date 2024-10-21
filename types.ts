@@ -3,15 +3,21 @@ export type task = {
   name: string;
   status: taskStatus;
   creation_time: Date;
-  deadline: Date;
+  startTime: Date | null;
+  deadline: Date | null;
   progress: number;
   subTasks: subTask[];
+  isRoutine: boolean;
+  repeat?: RepeatPattern;
 };
 
 export type subTask = {
   _id: string;
   title: string;
   type: subTaskType;
+  status?: taskStatus;
+  progress?: number;
+  isRoutine?: boolean;
 };
 
 export enum subTaskType {
@@ -24,4 +30,27 @@ export enum taskStatus {
   todo,
   pending,
   doing,
+}
+
+interface RepeatPattern {
+  frequency: frequency;
+  daysOfWeek?: daysOfWeek;
+  startTime: Date;
+  endTime: Date;
+}
+
+export enum frequency {
+  daily,
+  weekly,
+  monthly,
+}
+
+export enum daysOfWeek {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
 }

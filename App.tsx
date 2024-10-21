@@ -11,11 +11,9 @@ import store from './redux/store';
 function App(): React.JSX.Element {
   return (
     <Provider store={store}>
-      <PaperProvider>
-        <ThemeProvider>
-          <Router />
-        </ThemeProvider>
-      </PaperProvider>
+      <ThemeProvider>
+        <Router />
+      </ThemeProvider>
     </Provider>
   );
 }

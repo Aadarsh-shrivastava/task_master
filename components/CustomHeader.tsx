@@ -14,8 +14,14 @@ const CustomHeader = () => {
           name="search"
           size={theme.size.l}
           color={theme.colors.foreground}
+          style={styles(theme).icons}
         />
-        <Icon name="menu" size={theme.size.l} color={theme.colors.foreground} />
+        <Icon
+          name="more-vert"
+          size={theme.size.l}
+          color={theme.colors.foreground}
+          style={styles(theme).icons}
+        />
       </View>
     </View>
   );
@@ -41,7 +47,8 @@ const styles = (theme: Theme) =>
     rightIcons: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      margin: theme.size.s,
+      marginVertical: theme.size.sm,
     },
+    icons: {padding: theme.spacing.s},
     leftIcons: {},
   });
